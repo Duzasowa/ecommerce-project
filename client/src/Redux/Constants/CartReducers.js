@@ -14,12 +14,10 @@ export const cartReducer = (state = {cartItem: [] },action) => {
             ),
           };
       } else {
-          return {
-            ...state,
-            cartItems: state.cartItems.filter(
-              (x) => x.product !== action.payload
-            ),
-          };
+        return {
+          ...state,
+          cartItems: [...state.cartItems, item],
+        };
       }
 
     default:
