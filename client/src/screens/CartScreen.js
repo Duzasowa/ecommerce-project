@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Header from "./../components/Header";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../Redux/Actions/CartActions";
+import { addToCart, removefromcart } from "../Redux/Actions/CartActions";
 
 const CartScreen = ({ match, location, history}) => {
   window.scrollTo(0, 0);
@@ -25,8 +25,8 @@ const CartScreen = ({ match, location, history}) => {
     history.push("/login?redirect=shipping");
   };
 
-  const removeFromCartHandle = () => {
-    //TODO
+  const removeFromCartHandle = (id) => {
+    dispatch(removefromcart(id));
   };
 
   return (
