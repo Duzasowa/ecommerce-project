@@ -1,3 +1,12 @@
+import {
+  USER_LOGIN_FAIL,
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
+  USER_LOGOUT,
+} from "../Constants/UserContants.js";
+import axios from "axios";
+
+
 // LOGIN
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -14,7 +23,7 @@ export const login = (email, password) => async (dispatch) => {
       { email, password },
       config
     );
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: data});
+    dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
 
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
@@ -26,4 +35,14 @@ export const login = (email, password) => async (dispatch) => {
           : error.message,
     });
   }
-}
+};
+
+//LOGOUT
+// LOGOUT
+export const logout = () => (dispatch) => {
+  localStorage.removeItem("userInfo");
+  dispatch({ type: USER_LOGOUT });
+  // optional
+  document.location.href = "/login";
+};
+

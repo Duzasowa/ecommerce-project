@@ -1,5 +1,5 @@
 import express from "express"; 
-import User from "./Models/UserModels.js";
+import User from "./Models/UserModel.js";
 import users from "./data/users.js";
 import products from "./data/Products.js";
 import Product from "./Models/ProductModel.js";
