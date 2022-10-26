@@ -14,6 +14,7 @@ import {
   USER_UPDATE_PROFILE_SUCCESS,
 } from "../Constants/UserContants.js";
 import axios from "axios";
+import { ORDER_LIST_MY_RESET } from "../Constants/OrderConstants.js";
 
 
 // LOGIN
@@ -51,8 +52,7 @@ export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: USER_DETAILS_RESET });
-  // optional
-  document.location.href = "/login";
+  dispatch({ type: ORDER_LIST_MY_RESET});
 };
 
 // REGISTER
