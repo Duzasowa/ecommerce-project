@@ -4,11 +4,11 @@ import { PRODUCT_CREATE_REVIEW_FAIL, PRODUCT_CREATE_REVIEW_REQUEST, PRODUCT_CREA
 
 
 // PRODUCT LIST
-export const listProduct = () => async(dispatch) => {
+export const listProduct = (keyword=" ") => async(dispatch) => {
   try {
-    dispatch({type:PRODUCT_LIST_REQUEST})
-    const {data} = await axios.get("/api/products");
-    dispatch({type:PRODUCT_LIST_SUCCESS,payload:data})
+    dispatch({type:PRODUCT_LIST_REQUEST});
+    const {data} = await axios.get(`/api/products?keyword=${keyword}`);
+    dispatch({type:PRODUCT_LIST_SUCCESS,payload:data});
   } catch (error) {
     dispatch({
       type: PRODUCT_LIST_FAIL,
